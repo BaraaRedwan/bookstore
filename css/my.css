@@ -13,6 +13,9 @@
                 @media(max-width:767px){
           #query_button {padding: 5px 20px;}
             }
+        .img-author{height: 120px; width: 70px;}
+        .name-author{text-align: center; color: #c73b88!important;}
+        
         #top {border:1px solid #DEEAEE;background:#fff;border-radius:10px; height: 100%;}
         #searchbox {background:#c73b88;overflow:hidden;}
         #header{margin-top:20px;}
@@ -28,5 +31,10 @@
         #author {margin-top:20px; background:#fff; border :1px solid #DEEAEE;border-radius:10px;}
         #author .row {margin-top: 20px; margin-bottom:20px;}
         #author h3{color:rgb(228, 55, 25);}
+        #cart {margin-top: 30px; margin-bottom: 30px;}
+        .panel {border: 1px solid palevioletred;padding-left: 0px;padding-right: 0px;}
+        .panel-heading {background: palevioletred !important;color: white !important;}
+        div .b{margin-bottom: 5px;}
         footer {background:#525455!important;margin-top: 20px;border:1px solid #DEEAEE;border-radius:5px;color:#c73b88!important;}
         footer .row {padding:10px;}
+        
