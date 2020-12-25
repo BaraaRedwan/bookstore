@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/my.css" type="text/css">
+<body>
+<style>
+
+        #books .row{margin-top:30px;font-weight:800;}
+        @media only screen and (max-width: 760px) { #books .row{margin-top:10px;}}
+        .book-block {margin-top:20px;margin-bottom:10px; padding:10px 10px 10px 10px; border :1px solid #DEEAEE;border-radius:10px;height:100%;}
+        .moreinfo {background-color: palevioletred; color: black;}
+</style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="padding: 1px;"><img class="img-responsive" alt="Brand" src="img/logo2.png"  style="height: 52px; width: 120px;margin-left: 5px;"></a>
+          </div>
+  
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <button type="button" id="login_button" class="btn btn-lg" data-toggle="modal">Login</button>
+              </li>
+              <li>
+                <button type="button" id="register_button" class="btn btn-lg" data-toggle="modal" data-target="#register">Sign Up</button>
+              </li>
+            
+     
+              <li> 
+                  <a href="#" class="btn btn-lg"> Hello  User</a>
+              </li>
+              <li> 
+                  <a href="cart.html" class="btn btn-lg"> Cart </a>
+               </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  <div id="top" >
+      <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
+          <div>
+              <form role="search" method="POST" action="Result.php">
+                  <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category">
+              </form>
+          </div>
+      </div>
+ 
+<div class="container-fluid" id="books">
+        <div class="row">
+          <div class="col-xs-12 text-center" id="heading">
+                 <h4 style="color:palevioletred;text-transform:uppercase;"> All Result </h4>
+           </div>
+        </div>
+           
+        <div class="row">
+            <a href="description">
+                <div class="col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-'.$offset.' col-lg-3 text-center w3-card-8 w3-dark-grey">
+                    <div class="book-block" style="border :3px solid palevioletred;">
+                    <img class="container book img-responsive" src="img/books/BIO-6.jpg">
+                    <span style="text-decoration:line-through;color:palevioletred"> </span>
+                    <span class="label" style="color: palevioletred;">DisAccount</span>
+                  </div>
+                </div>
+              </a>
+              <div class="col-sm-6 col-md-5 col-lg-5">
+                <div class="book-block" style="border :3px solid palevioletred;">
+                <h1>My First Kwanzaa (My First Holiday)
+                  <small>by <a href="http://">Noor M. Albardwil</a></small>
+                </h1>
+                <h3>Buy it Now</h3>
+                <h3 class="text-muted"> Out Stock</h3>
+                <h1>                <a role="button" data-inventoryid="151421311" data-marketplace="1" data-condition="New" data-price="11.79" class="btn btn-lg btn-block moreinfo invert white bd-white bg-color-secondary-2-0">More Info</a></h1>
+                <h3>$11.79 <span class="smaller text-muted">USD</span></h3>
+                <h5>May Ship Separately</h5>
+                <a role="button" data-inventoryid="151421311" data-marketplace="1" data-condition="New" data-price="11.79" class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
+                <h3>Reader Review</h3>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+              </div>
+              </div>
+          </div>
+            
+        </div>
+            
+        <div class="row">
+            <a href="description">
+                <div class="col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-'.$offset.' col-lg-3 text-center w3-card-8 w3-dark-grey">
+                    <div class="book-block" style="border :3px solid palevioletred;">
+                    <img class="container book img-responsive" src="img/books/BIO-6.jpg">
+                    <span style="text-decoration:line-through;color:palevioletred"> </span>
+                    <span class="label" style="color: palevioletred;">DisAccount</span>
+                  </div>
+                </div>
+              </a>
+              <div class="col-sm-6 col-md-5 col-lg-5">
+                <div class="book-block" style="border :3px solid palevioletred;">
+                <h1>My First Kwanzaa (My First Holiday)
+                  <small>by <a href="http://">Noor M. Albardwil</a></small>
+                </h1>
+                <h3>Buy it Now</h3>
+                <h3 class="text-muted"> Out Stock</h3>
+                <h1>                <a role="button" data-inventoryid="151421311" data-marketplace="1" data-condition="New" data-price="11.79" class="btn btn-lg btn-block moreinfo invert white bd-white bg-color-secondary-2-0">More Info</a></h1>
+                <h3>$11.79 <span class="smaller text-muted">USD</span></h3>
+                <h5>May Ship Separately</h5>
+                <a role="button" data-inventoryid="151421311" data-marketplace="1" data-condition="New" data-price="11.79" class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
+                <h3>Reader Review</h3>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+                <span class="glyphicon glyphicon-star star color-complement-2"></span>
+              </div>
+              </div>
+          </div>
+            
+        </div>
+        
+            
+        </div>
+    </div>        
+        
+   </div>
+   <footer style="margin-left:-6%;margin-right:-6%;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-1">
+            </div>
+            <div class="col-sm-7 col-md-5 col-lg-5">
+                <div class="row text-center">
+                    <h2>Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>Still Confused? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                        <p>0599777222</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <p>BookStore@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-sm-down col-md-2 col-lg-2">
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center">
+                <h2 style="color:palevioletred">Follow Us At</h2>
+                <div>
+                    <a href="https://twitter.com">
+                    <img title="Twitter" alt="Twitter" src="img/social/twitter.png" width="35" height="35" />
+                    </a>
+                    <a href="https://www.linkedin.com">
+                    <img title="LinkedIn" alt="LinkedIn" src="img/social/linkedin.png" width="35" height="35" />
+                    </a>
+                    <a href="https://www.facebook.com">
+                    <img title="Facebook" alt="Facebook" src="img/social/facebook.png" width="35" height="35" />
+                    </a>
+                    <a href="https://google.com">
+                    <img title="google+" alt="google+" src="img/social/google.jpg" width="35" height="35" />
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="container">
+<button type="button" id="query_button" class="btn btn-lg" data-toggle="modal" data-target="#query">Ask query</button>
+<div class="modal fade" id="query" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ask your query here</h4>
+        </div>
+    </div>
+  </div>  
+</div>
+</div>
+</body>
+</html>		

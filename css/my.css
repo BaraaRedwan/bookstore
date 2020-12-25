@@ -1,0 +1,40 @@
+        body {margin-top:50px;margin-left:5%;margin-right:5%;font-family:"Open sans";background: #F5F8F9;overflow-x:hidden;}
+        .navbar {background:#525455;display:inline-block;z-index:100;color:#000;}
+        .navbar li a {color:#c73b88!important;}
+        .modal-header {background:palevioletred;color:#fff;font-weight:800;}
+        .modal-body{font-weight:800;}
+        .modal-body ul{list-style:none;}
+        .modal .btn {background:palevioletred;color:#fff;}
+        .modal a{color:palevioletred;}
+        .modal-backdrop {position:inherit !important;}
+         #login_button,#register_button{background:#cfcccb;color:palevioletred!important; margin: 2px;}       
+         #query_button {position:fixed;right:0px;bottom:0px;padding:10px 80px;
+                        background-color:palevioletred;color:#fff;border-color:#f05f40;border-radius:2px;}
+                @media(max-width:767px){
+          #query_button {padding: 5px 20px;}
+            }
+        .img-author{height: 120px; width: 70px;}
+        .name-author{text-align: center; color: #c73b88!important;}
+        
+        #top {border:1px solid #DEEAEE;background:#fff;border-radius:10px; height: 100%;}
+        #searchbox {background:#c73b88;overflow:hidden;}
+        #header{margin-top:20px;}
+        #myCarousel {border:1px solid #ccc;margin-top:10px;}
+        #myCarousel img {width:100%;}
+        #category ul{list-style-type:none;overflow:hidden;width:100%; border:1px solid #ccc;background: #fff; border-bottom-right-radius:10px;border-bottom-left-radius: 10px;}
+        #category li {display:block; font-weight:400; padding:10px; border-top: 1px solid #ccc;margin-left:-40px; }
+        #offer img {margin-top:10px;margin-bottom:15px;border:1px solid #DEEAEE;}
+        #new {font-weight:800;}
+        .tag {display:inline;float:left;padding:2px 5px;width:auto;background:#90e137;color:#fff;height:23px;}
+        .tag-side{display:inline;float:left;}
+        .book-block {margin-top:20px;padding:5px;background:#fff; border :1px solid #DEEAEE;border-radius:10px;}
+        #author {margin-top:20px; background:#fff; border :1px solid #DEEAEE;border-radius:10px;}
+        #author .row {margin-top: 20px; margin-bottom:20px;}
+        #author h3{color:rgb(228, 55, 25);}
+        #cart {margin-top: 30px; margin-bottom: 30px;}
+        .panel {border: 1px solid palevioletred;padding-left: 0px;padding-right: 0px;}
+        .panel-heading {background: palevioletred !important;color: white !important;}
+        div .b{margin-bottom: 5px;}
+        footer {background:#525455!important;margin-top: 20px;border:1px solid #DEEAEE;border-radius:5px;color:#c73b88!important;}
+        footer .row {padding:10px;}
+        
