@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\HomeController;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,4 +38,16 @@ Route::prefix('admin')->group(function(){
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/product/{id}', [App\Http\Controllers\ProductsController::class , 'show'])
+            ->name('product.details')
+            ->where([
+                'id' => '\d+'
+            ]);
+Route::get('/category/{id}', [App\Http\Controllers\CategoriesController::class , 'show'])
+        ->name('category.details')
+        ->where([
+            'id' => '\d+'
+        ]);
+

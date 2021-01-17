@@ -16,11 +16,11 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle "  data-target="bs-example-navbar" >
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar">1111111</span>
-                    <span class="icon-bar">111111111</span>
-                    <span class="icon-bar">1111111111</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#" style="padding: 1px;"><img class="img-responsive" alt="Brand" src="{{asset('img/logo2.png')}}" style="height: 52px; width: 100px;margin: 0px;"></a>
             </div>
