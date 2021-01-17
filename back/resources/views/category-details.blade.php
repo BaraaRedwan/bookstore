@@ -20,7 +20,7 @@
     <div class="row">
     @foreach($products as $product)
         <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href="">
+            <a href="{{route('product.details', $product->id)}}">
                 <div class="book-block">
                     <div class="tag-side"><img src="{{asset('img/tag.png')}}"></div>
                     <img class="book block-center img-responsive" src="{{asset('storage/' . $product->image)}}">
