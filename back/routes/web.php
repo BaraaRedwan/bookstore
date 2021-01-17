@@ -31,22 +31,7 @@ Route::prefix('admin')->group(function(){
 
     Route::resource('products', ProductsController::class);
 
-    Route::get('/home','HomeController@index');
-
-
-    /*Route::get('/categories','CategoriesController@index')->name('categories');
-    Route::get('/categories/creat','CategoriesController@creat')->name('categories.creat');
-    Route::post('/categories','CategoriesController@store')->name('categories.store');
-    Route::get('/categories/{id}','CategoriesController@edit')->name('categories.edit');
-    Route::put('/categories/{id}','CategoriesController@update')->name('categories.update');
-    Route::delete('/categories/{id}','CategoriesController@delete')->name('categories.delete');
-
-    Route::get('/products','ProductsController@index');
-    Route::get('/products/create','ProductsController@create');
-    Route::post('/products','ProductsController@store');
-    Route::get('/products/{id}','ProductsController@edit');
-    Route::put('/products/{id}','ProductsController@update');
-    Route::delete('/products/{id}','ProductsController@delete');*/
+   
 
 });
 
