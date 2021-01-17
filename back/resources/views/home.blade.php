@@ -51,7 +51,7 @@
     <div class="row">
     @foreach($new_arrivals as $product)
         <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href="">
+            <a href="{{route('product.details', $product->id)}}">
                 <div class="book-block">
                     <div class="tag">New</div>
                     <div class="tag-side"><img src="{{asset('img/tag.png')}}"></div>

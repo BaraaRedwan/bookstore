@@ -34,26 +34,4 @@
     @endforeach
 </div>
 
-<div class="container-fluid" id="author">
-    <h3 class="text-center" style="color:palevioletred;"> Who Owns this Store </h3>
-    <div class="row">
-        <div class="col-sm-5 col-md-3 col-lg-3">
-            <a href=""><img class="img-author img-responsive center-block" src="{{asset('img/popular-author/1.jpg')}}"></a>
-            <h4 class="name-author">Noor M. Albardawil</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href=""><img class="img-author img-responsive center-block" src="{{asset('img/popular-author/2.jpg')}}"></a>
-            <h4 class="name-author">Aya K. Omar</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href=""><img class="img-author img-responsive center-block" src="{{asset('img/popular-author/3.jpg')}}"></a>
-            <h4 class="name-author">Baraa SH. Redwan</h4>
-        </div>
-        <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href=""><img class="img-author img-responsive center-block" src="{{asset('img/popular-author/4.jpg')}}"></a>
-            <h4 class="name-author">Mai Y. Allhaam</h4>
-        </div>
-    </div>
-
-</div>
 @endsection
