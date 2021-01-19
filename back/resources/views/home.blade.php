@@ -10,7 +10,7 @@
             <div style="background:palevioletred;color:#fff;font-weight:800;border:none;padding:15px;"> The Book Shop </div>
             <ul>
                 @foreach($catigories as $catigory)
-                <li> <a href="{{route('category.details', $catigory->id)}}"> {{$catigory->name}} </a> </li>
+                <li> <a href="{{route('categories.index', $catigory->id)}}"> {{$catigory->name}} </a> </li>
                 @endforeach
             </ul>
         </div>
@@ -51,7 +51,7 @@
     <div class="row">
     @foreach($new_arrivals as $product)
         <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href="{{route('product.details', $product->id)}}">
+            <a href="{{route('products.index', $product->id)}}">
                 <div class="book-block">
                     <div class="tag">New</div>
                     <div class="tag-side"><img src="{{asset('img/tag.png')}}"></div>
