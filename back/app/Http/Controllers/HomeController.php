@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
 
     /**
@@ -26,11 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $all_catigories = Category::orderBy('created_at', 'DESC')->get();  
-        $slider_catigories = Category::latest()->limit(4)->orderBy('created_at', 'DESC')->get();  
-        $new_arrivals = Product::latest()->limit(8)->get();
+        $all_catigories = Category::orderBy('created_at', 'ASC')->get();  
+        $slider_products = Product::latest()->limit(4)->orderBy('created_at', 'DESC')->get();  
+        $new_arrivals = Product::latest()->limit(4)->get();
         return view('home', [
-            'slider_catigories' => $slider_catigories,
+            'slider_products' => $slider_products,
             'catigories' => $all_catigories,
             'new_arrivals' => $new_arrivals,
             
