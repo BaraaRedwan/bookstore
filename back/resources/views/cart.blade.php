@@ -55,10 +55,10 @@
                             <td>${{ $item->price }}</td>
                             <td class=""></td>
                             <td>
-                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
-                                    {!! csrf_field() !!}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                <form class="" action="{{ route('cart.delete',[$item->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit"class="btn btn-danger" name="button">Delete</button>
                                 </form>
 
                                 <form action="{{ url('switchToWishlist', [$item->rowId]) }}" method="POST"
@@ -76,7 +76,7 @@
             </table>
 
             <a href="{{ url('/home') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-            <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+            <a onclick="alert('Your Balance is $')" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
             <div style="float:right">
                 <form action="{{ url('/emptyCart') }}" method="POST">

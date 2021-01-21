@@ -19,6 +19,20 @@ class HomeController extends Controller
        // $this->middleware('auth');
     }
 
+
+    public function search(Request $request)
+    {
+        $q = '';
+        if($request->q){
+            $q = $request->q;
+        }
+        $items = Product::where("name","like","%$q%")
+                ->orWhere("email","like","%$q%")
+                ->get();
+                dd($items);
+        return view("home")->with('items',$items);
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -26,14 +40,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $all_catigories = Category::orderBy('created_at', 'ASC')->get();  
-        $slider_products = Product::latest()->limit(4)->orderBy('created_at', 'DESC')->get();  
+        $all_catigories = Category::orderBy('created_at', 'ASC')->get();
+        $slider_products = Product::latest()->limit(4)->orderBy('created_at', 'DESC')->get();
         $new_arrivals = Product::latest()->limit(4)->get();
         return view('home', [
             'slider_products' => $slider_products,
             'catigories' => $all_catigories,
             'new_arrivals' => $new_arrivals,
-            
+
         ]);
     }
 }

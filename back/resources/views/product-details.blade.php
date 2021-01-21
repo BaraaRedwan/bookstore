@@ -13,17 +13,17 @@
 
         <a href="description">
             <div class="a col-sm-6 col-md-3 col-lg-3 text-center">
-                <div class="book-block" style="border :3px solid palevioletred;">
-                    <img class="container book img-responsive" src="{{ asset('storage/' . $product->image) }}">
+                <div class="book-block" style="border :3px solid palevioletred;height: 260px">
+                    <img  class="container book img-responsive" src="{{ asset('storage/' . $product->image) }}">
                     <span style="text-decoration:line-through;color:palevioletred"> </span>
                     <span class="label" style="color: palevioletred;">DisAccount</span>
                 </div>
             </div>
         </a>
         <div class="col-sm-6 col-md-5 col-lg-5">
-            <div class="book-block" style="border :3px solid palevioletred;">
+            <div class="book-block" style="border :3px solid palevioletred;height: 260px">
                 <h1>{{$product->name}}
-                    
+
                 </h1>
                 <h3>Description</h3>
                 <h4>{{ $product->description }}</h4>
@@ -36,19 +36,13 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-5 col-lg-4">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="" >
-                <h3>Buy it Now</h3>
+        <div class="col-sm-6 col-md-5 col-lg-4" style="text-align: center;back">
+            <div class="book-block" style="border :3px solid palevioletred;height: 260px">
+                <h3 style="color: red">Buy it Now</h3>
                 <h3 class="text-muted" hidden> Out Stock</h3>
                 <h3>${{$product->price}} <span class="smaller text-muted">USD</span></h3>
                 <h5>May Ship Separately</h5>
-                <a role="button" data-inventoryid="151421311" data-marketplace="1" data-condition="New" data-price="11.79" class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
+                <a role="button"class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
             </div>
         </div>
     </div>
