@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\SearchController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,14 +29,14 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('admin')->group(function(){
-    
+Route::prefix('admin')->middleware('auth')->group(function () {
+
     Route::resource('categories', CategoriesController::class);
-    Route::get('/categories/{id}/childs', [CategoriesController::class,'index'])->name('categories.child');
+    Route::get('/categories/{id}/childs', [CategoriesController::class, 'index'])->name('categories.child');
 
     Route::resource('products', ProductsController::class);
-
-   
+    Route::get('/orders', [OrderController::class , 'index'])->name('orders.index');
+    Route::get('/show/{id}', [OrderController::class , 'show'])->name('orders.show');
 
 });
 
@@ -40,14 +44,23 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/product/{id}', [App\Http\Controllers\ProductsController::class , 'show'])
-            ->name('product.details')
-            ->where([
-                'id' => '\d+'
-            ]);
-Route::get('/category/{id}', [App\Http\Controllers\CategoriesController::class , 'show'])
-        ->name('category.details')
-        ->where([
-            'id' => '\d+'
-        ]);
+Route::get('/search_result', [SearchController::class, 'index'])->name('search');
 
+Route::get('/product/{id}', [App\Http\Controllers\ProductsController::class, 'show'])
+    ->name('product.details')
+    ->where([
+        'id' => '\d+'
+    ]);
+Route::get('/category/{id}', [App\Http\Controllers\CategoriesController::class, 'show'])
+    ->name('category.details')
+    ->where([
+        'id' => '\d+'
+    ]);
+
+Route::post('cart', [CartController::class,'store'] )->name('cart.store');
+Route::get('cart', [CartController::class,'index'])->name('cart');
+Route::put('cart', [CartController::class,'update'])->name('cart.update');
+Route::get('cart/remove/{product_id}', [CartController::class,'remove'])->name('cart.remove');
+
+Route::get('orders', [OrdersController::class , 'index'] )->name('orders')->middleware('auth');
+Route::get('orders/create', [OrdersController::class , 'store'] )->name('orders.store')->middleware('auth');

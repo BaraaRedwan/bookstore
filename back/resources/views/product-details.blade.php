@@ -23,7 +23,7 @@
         <div class="col-sm-6 col-md-5 col-lg-5">
             <div class="book-block" style="border :3px solid palevioletred;">
                 <h1>{{$product->name}}
-                    
+
                 </h1>
                 <h3>Description</h3>
                 <h4>{{ $product->description }}</h4>
@@ -43,12 +43,18 @@
             <br>
             <br>
             <br>
-            <div class="" >
+            <div class="">
                 <h3>Buy it Now</h3>
                 <h3 class="text-muted" hidden> Out Stock</h3>
                 <h3>${{$product->price}} <span class="smaller text-muted">USD</span></h3>
                 <h5>May Ship Separately</h5>
-                <a role="button" data-inventoryid="151421311" data-marketplace="1" data-condition="New" data-price="11.79" class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
+                <li>
+                    <form method="post" action=" {{ route('cart.store') }} ">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</button>
+                    </form>
+                </li>
             </div>
         </div>
     </div>

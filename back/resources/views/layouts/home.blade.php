@@ -16,7 +16,7 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle "  data-target="bs-example-navbar" >
+                <button type="button" class="navbar-toggle " data-target="bs-example-navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -25,39 +25,63 @@
                 <a class="navbar-brand" href="#" style="padding: 1px;"><img class="img-responsive" alt="Brand" src="{{asset('img/logo2.png')}}" style="height: 52px; width: 100px;margin: 0px;"></a>
             </div>
 
+
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+
+                    @guest
                     @if (Route::has('login'))
-                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                        @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                        @else
-                        <li>
-                            <button type="button" id="login_button" class="btn btn-lg" data-toggle="modal">
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                            </button>
-                        </li>
-                        @if (Route::has('register'))
-                        <li>
-                            <button type="button" id="register_button" class="btn btn-lg" data-toggle="modal" data-target="#register">
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                            </button>
-                        </li>
-                        @endif
-                        @endauth
-                    </div>
+                    <li>
+                        <button type="button" id=" login_button" class="btn btn-lg" data-toggle="modal">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </button>
+                    </li>
                     @endif
 
+                    @if (Route::has('register'))
+                    <li>
+                        <button type="button" id="register_button" class="btn btn-lg" data-toggle="modal">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                        </button>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
+
+                    <li>
+                        <a href="{{route('cart')}}" class="btn btn-lg"> Cart </a>
+                    </li>
 
                 </ul>
             </div>
+
+
+
+
         </div>
     </nav>
     <div id="top">
         <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
             <div>
-                <form role="search" method="POST" action="Result.html">
-                    <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category">
+                <form action="{{ route('search') }}" method="get" class="form-inline">
+                    <input type="text" name="name" class="form-control" placeholder="Search for a Book" style="width:70%;margin:20px 10% 20px 10%;">
+                    <button type="submit" class="btn btn-outline-dark">Search</button>
                 </form>
             </div>
         </div>

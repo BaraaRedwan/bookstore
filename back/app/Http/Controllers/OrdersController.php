@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class OrdersController extends Controller
 {
@@ -13,72 +17,65 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        return Auth::user()->orders;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function store()
     {
-        //
-    }
+        $user = Auth::user();
+        /*$order = Order::forceCreate([
+            'user_id' => $user->id,
+        ]);*/
+        
+        DB::beginTransaction();
+        
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        try {
+            $order = $user->orders()->create([
+                'status' => 'pending-payment',
+                'tax' => '14',
+                'discount' => '0',
+            ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            foreach ($user->cartProducts as $product) {
+                $order->products()->attach($product->id, [
+                    'quantity' => $product->cart->quantity,
+                    'price' => $product->cart->price,
+                ]);
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            Cart::where('user_id', $user->id)->delete();
+            
+            DB::commit();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+
+
+
+        } catch(Throwable $e) {
+            DB::rollBack();
+            return $e->getMessage();
+        }
+
+        return redirect()->route('orders')
+            ->with('success', 'Order created!');
+
+        /*DB::transaction(function() {
+            $order = $user->orders()->create([
+                'status' => 'pending-payment',
+                'tax' => '14',
+                'discount' => '10',
+            ]);
+
+            foreach ($user->cartProducts as $product) {
+                $order->products()->attach($product->id, [
+                    'quantity' => $product->cart->quantity,
+                    'price' => $product->cart->price,
+                ]);
+            }
+        });*/
+
+        
     }
 }

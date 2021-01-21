@@ -32,11 +32,11 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
+                    @foreach($slider_products as $product)
                     <div class="item active">
-                        @foreach($slider_products as $product)
                         <img class="img-responsive" src="{{ asset('storage/' . $product->image) }}">
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
 </div>
 <div class="container-fluid text-center" id="new">
     <div class="row">
-    @foreach($new_arrivals as $product)
+        @foreach($new_arrivals as $product)
         <div class="col-sm-6 col-md-3 col-lg-3">
             <a href="{{route('product.details', $product->id)}}">
                 <div class="book-block">
