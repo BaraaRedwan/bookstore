@@ -9,7 +9,7 @@
     <div class="row">
     @foreach($products as $product)
         <div class="col-sm-6 col-md-3 col-lg-3">
-            <a href="{{route('product.details', $product->id)}}">
+            <a href="{{route('Productshow', $product->id)}}">
                 <div class="book-block">
                     <div class="tag-side"><img src="{{asset('img/tag.png')}}"></div>
                     <img class="book block-center img-responsive" src="{{asset('storage/' . $product->image)}}">

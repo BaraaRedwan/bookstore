@@ -43,7 +43,7 @@
                 <h3 class="text-muted" hidden> Out Stock</h3>
                 <h3>${{$product->price}} <span class="smaller text-muted">USD</span></h3>
                 <h5>May Ship Separately</h5>
-                <a role="button"class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
+                <a href="{{route('cart.store')}}" role="button"class="btn btn-lg btn-block btn-success invert white bd-white bg-color-secondary-2-0">Add to Cart</a>
             </div>
         </div>
     </div>

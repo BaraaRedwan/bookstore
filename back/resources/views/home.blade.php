@@ -37,16 +37,6 @@
                                 <img class="img-responsive" style="height: 300px;width:600px"
                                     src="{{ asset('storage/' . $product->image) }}">
 
-<div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <img class="img-responsive" style="height: 300px;width:250px" src="{{ asset('img/tag.png') }}">
-                        </div>
-                        @foreach ($slider_products as $product)
-                            <div class="item">
-
-                                <img class="img-responsive" style="height: 300px;width:600px"
-                                    src="{{ asset('storage/' . $product->image) }}">
-
                             </div>
                         @endforeach
                     </div>
@@ -60,7 +50,6 @@
         </div>
     </div>
 </div>
-
     <div class="container-fluid text-center" id="new">
         <div class="row" style="height: 350px">
             @foreach ($new_arrivals as $product)
