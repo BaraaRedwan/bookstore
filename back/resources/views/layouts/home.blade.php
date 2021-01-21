@@ -45,8 +45,10 @@
                         </li>
                         @endif
                         @endauth
+
                     </div>
                     @endif
+                    <a href="{{asset('cart')}}" class="btn btn-lg"> Swtich to cart </a>
 
 
                 </ul>
@@ -56,8 +58,13 @@
     <div id="top">
         <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;">
             <div>
-                <form role="search" method="POST" action="Result.html">
-                    <input type="text" class="form-control" name="keyword" style="width:80%;margin:20px 10% 20px 10%;" placeholder="Search for a Book , Author Or Category">
+                <form class='row mb-3'>
+                    <div class='col-sm-10' style="margin-top: 17px">
+                        <input name='q' value='{{request()->q}}' autofocus type="text" class='form-control' placeholder="Enter your search ..." />
+                    </div>
+                    <div class='col-sm-1'>
+                        <input style="width:80%;margin:20px 10% 20px 10%;" type="submit" class='btn btn-primary' value='Search' />
+                    </div>
                 </form>
             </div>
         </div>
