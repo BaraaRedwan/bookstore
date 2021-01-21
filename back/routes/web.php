@@ -5,10 +5,15 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\SearchController;
-use App\Models\Category;
+
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\ProductDetailsController;
+use App\Http\Controllers\CategoryDetailsController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,6 +34,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::resource('categories', CategoriesController::class);
@@ -38,9 +44,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/orders', [OrderController::class , 'index'])->name('orders.index');
     Route::get('/show/{id}', [OrderController::class , 'show'])->name('orders.show');
 
-});
 
-Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get("showProduct/{id}", [ProductDetailsController::class, 'show'])->name("Productshow");
+Route::get("showCategoey/{id}", [CategoryDetailsController::class, 'show'])->name("Categoryshow");
+
+
+
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -64,3 +76,10 @@ Route::get('cart/remove/{product_id}', [CartController::class,'remove'])->name('
 
 Route::get('orders', [OrdersController::class , 'index'] )->name('orders')->middleware('auth');
 Route::get('orders/create', [OrdersController::class , 'store'] )->name('orders.store')->middleware('auth');
+
+        Route::resource('products', ProductsController::class);
+    });
+});
+
+Auth::routes();
+

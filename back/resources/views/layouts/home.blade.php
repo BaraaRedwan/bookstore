@@ -31,12 +31,29 @@
 
                     @guest
                     @if (Route::has('login'))
-                    <li>
-                        <button type="button" id=" login_button" class="btn btn-lg" data-toggle="modal">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </button>
-                    </li>
+
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        @auth
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                        @else
+                        <li>
+                            <button type="button" id="login_button" class="btn btn-lg" data-toggle="modal">
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                            </button>
+                        </li>
+                        @if (Route::has('register'))
+                        <li>
+                            <button type="button" id="register_button" class="btn btn-lg" data-toggle="modal" data-target="#register">
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            </button>
+                        </li>
+                        @endif
+                        @endauth
+
+                    </div>
+
                     @endif
+                    <a href="{{asset('cart')}}" class="btn btn-lg"> Swtich to cart </a>
 
                     @if (Route::has('register'))
                     <li>
@@ -82,6 +99,7 @@
                 <form action="{{ route('search') }}" method="get" class="form-inline">
                     <input type="text" name="name" class="form-control" placeholder="Search for a Book" style="width:70%;margin:20px 10% 20px 10%;">
                     <button type="submit" class="btn btn-outline-dark">Search</button>
+
                 </form>
             </div>
         </div>
