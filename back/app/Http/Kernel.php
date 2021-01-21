@@ -43,6 +43,11 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'admin' => [
+            Authenticate::class,
+            EnsureEmailIsVerified::class,
+        ],
     ];
 
     /**

@@ -40,9 +40,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $all_catigories = Category::orderBy('created_at', 'ASC')->get();
-        $slider_products = Product::latest()->limit(4)->orderBy('created_at', 'DESC')->get();
-        $new_arrivals = Product::latest()->limit(4)->get();
+
+        $all_catigories = Category::orderBy('created_at', 'ASC')->get();  
+        $slider_products = Product::latest()->limit(4)->orderBy('created_at', 'DESC')->get();  
+        $new_arrivals = Product::latest()->limit(8)->get();
+
+
         return view('home', [
             'slider_products' => $slider_products,
             'catigories' => $all_catigories,

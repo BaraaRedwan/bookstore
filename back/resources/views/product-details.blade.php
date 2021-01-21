@@ -36,6 +36,7 @@
             </div>
         </div>
 
+
         <div class="col-sm-6 col-md-5 col-lg-4" style="text-align: center;back">
             <div class="book-block" style="border :3px solid palevioletred;height: 260px">
                 <h3 style="color: red">Buy it Now</h3>
