@@ -34,7 +34,7 @@ class Cart extends Pivot
         return $this->belongsTo(Product::class);
     }
 
-    protected $fillable = ['user_id', 'product_id', 'quantity','price'];
+ 
 
 
 }

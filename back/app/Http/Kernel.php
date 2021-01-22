@@ -44,10 +44,6 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
-        'admin' => [
-            Authenticate::class,
-            EnsureEmailIsVerified::class,
-        ],
     ];
 
     /**

@@ -29,9 +29,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 
 
@@ -43,6 +43,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('products', ProductsController::class);
     Route::get('/orders', [OrderController::class , 'index'])->name('orders.index');
     Route::get('/show/{id}', [OrderController::class , 'show'])->name('orders.show');
+});
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -54,7 +55,7 @@ Route::get("showCategoey/{id}", [CategoryDetailsController::class, 'show'])->nam
 
 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/search_result', [SearchController::class, 'index'])->name('search');
 
@@ -78,8 +79,7 @@ Route::get('orders', [OrdersController::class , 'index'] )->name('orders')->midd
 Route::get('orders/create', [OrdersController::class , 'store'] )->name('orders.store')->middleware('auth');
 
         Route::resource('products', ProductsController::class);
-    });
-});
+   
 
 Auth::routes();
 

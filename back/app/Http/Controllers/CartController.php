@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Requests;
-use App\Models\Cart;
-use App\Models\User;
-use App\Models\Product;
-use Validator;
+
 
 class CartController extends Controller
 {
@@ -21,7 +17,7 @@ class CartController extends Controller
     public function index()
     {
         $user = Auth::user();
-        
+
         if ($user) {
             return view('cart', [
                 'products' => $user->cartProducts,
@@ -37,7 +33,7 @@ class CartController extends Controller
         $ids = array_keys($product_ids);
 
         $products = Product::whereIn('id', $ids)->get();
-        
+
         return view('cart', [
             'products' => $products,
             'quantity' => $product_ids,
@@ -52,7 +48,7 @@ class CartController extends Controller
             'quantity' => 'int',
         ]);
         $product_id = $request->post('product_id');
-        
+
         $user = Auth::user();
 
         if ($user) {
@@ -62,26 +58,25 @@ class CartController extends Controller
             Cart::updateOrCreate(
                 ['user_id' => $user->id, 'product_id' => $product_id],
                 [
-                    'quantity' => DB::raw('quantity + ' . $quantity), 
+                    'quantity' => DB::raw('quantity + ' . $quantity),
                     'price' => $price
                 ]
             );
 
             return redirect()->route('cart');
-
         } else {
             $products = $request->cookie('cart', []);
             if ($products) {
                 $products = unserialize($products);
             }
-            
+
             if (array_key_exists($product_id, $products)) {
                 $products[$product_id]++;
             } else {
                 $products[$product_id] = 1;
             }
 
-            
+
             $cookie = Cookie::make('cart', serialize($products), 10080); // One week
 
             return redirect()->route('cart')
@@ -146,12 +141,12 @@ class CartController extends Controller
     {
         $product_ids = session('cart', []);
         //request()->session()->get('cart', []);
-        
+
 
         $ids = array_keys($product_ids);
 
         $products = Product::whereIn('id', $ids)->get();
-        
+
         return view('cart', [
             'products' => $products,
             'quantity' => $product_ids,
@@ -162,7 +157,7 @@ class CartController extends Controller
     {
         $products = session('cart', []);
         //$products = $request->session()->get('cart', []);
-        
+
         $product_id = $request->post('product_id');
         if (array_key_exists($product_id, $products)) {
             $products[$product_id]++;
@@ -188,116 +183,8 @@ class CartController extends Controller
         ]);
 
         return redirect()->route('cart');
-=======
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $user = User::get();
-        $products = Product::get();
-        $count = Product::get()->count();
-
-        $cart = Cart::get();
-        //dd($count);
-        return view('cart',compact('user','products','cart','count'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
-            return $cartItem->id === $request->id;
-        });
+    
 
-        if (!$duplicates->isEmpty()) {
-            return redirect('cart')->withSuccessMessage('Item is already in your cart!');
-        }
-
-        Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
-        return redirect('cart')->withSuccessMessage('Item was added to your cart!');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update(Request $request, $id)
-    {
-        // Validation on max quantity
-        $validator = Validator::make($request->all(), [
-            'quantity' => 'required|numeric|between:1,5'
-        ]);
-
-         if ($validator->fails()) {
-            session()->flash('error_message', 'Quantity must be between 1 and 5.');
-            return response()->json(['success' => false]);
-         }
-
-        Cart::update($id, $request->quantity);
-        session()->flash('success_message', 'Quantity was updated successfully!');
-
-        return response()->json(['success' => true]);
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Cart::remove($id);
-        return redirect('cart')->withSuccessMessage('Item has been removed!');
-    }
-
-    /**
-     * Remove the resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function emptyCart()
-    {
-        Cart::destroy();
-        return redirect('cart')->withSuccessMessage('Your cart has been cleared!');
-    }
-
-    /**
-     * Switch item from shopping cart to wishlist.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function switchToWishlist($id)
-    {
-        $item = Cart::get($id);
-
-        Cart::remove($id);
-
-        $duplicates = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($id) {
-            return $cartItem->id === $id;
-        });
-
-        if (!$duplicates->isEmpty()) {
-            return redirect('cart')->withSuccessMessage('Item is already in your Wishlist!');
-        }
-
-        Cart::instance('wishlist')->add($item->id, $item->name, 1, $item->price)
-                                  ->associate('App\Product');
-
-        return redirect('cart')->withSuccessMessage('Item has been moved to your Wishlist!');
-    }
 }

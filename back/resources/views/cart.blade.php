@@ -102,7 +102,7 @@
                         <button type="submit" class="btn btn-lg">update</button>
                     </div>
                     <div class="b col-xs-8 col-xs-offset-5  col-sm-2 col-sm-offset-5 col-md-2 col-md-offset-5">
-                        <a href="index.html" class="btn btn-lg" style="background:palevioletred;color:white;font-weight:800;">Continue Shopping</a>
+                        <a href="{{ route('home') }}" class="btn btn-lg" style="background:palevioletred;color:white;font-weight:800;">Continue Shopping</a>
                     </div>
 
                     <div class="b col-xs-9 col-xs-offset-3  col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-5">

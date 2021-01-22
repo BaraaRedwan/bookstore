@@ -45,37 +45,15 @@ class OrdersController extends Controller
             }
 
             Cart::where('user_id', $user->id)->delete();
-            
+
             DB::commit();
-
-            
-
-
-
-
-        } catch(Throwable $e) {
+        } catch (Throwable $e) {
             DB::rollBack();
             return $e->getMessage();
         }
 
-        return redirect()->route('orders')
-            ->with('success', 'Order created!');
-
-        /*DB::transaction(function() {
-            $order = $user->orders()->create([
-                'status' => 'pending-payment',
-                'tax' => '14',
-                'discount' => '10',
-            ]);
-
-            foreach ($user->cartProducts as $product) {
-                $order->products()->attach($product->id, [
-                    'quantity' => $product->cart->quantity,
-                    'price' => $product->cart->price,
-                ]);
-            }
-        });*/
-
-        
+        return redirect()
+            ->route('cart')
+            ->with('success', "Order created We will contact you by email!");
     }
 }
