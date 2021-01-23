@@ -19,16 +19,16 @@ class OrdersController extends Controller
     {
         return Auth::user()->orders;
     }
-    
+
     public function store()
     {
         $user = Auth::user();
         /*$order = Order::forceCreate([
             'user_id' => $user->id,
         ]);*/
-        
+
         DB::beginTransaction();
-        
+
 
         try {
             $order = $user->orders()->create([
